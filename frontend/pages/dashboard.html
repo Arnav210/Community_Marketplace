@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Dashboard - Community Marketplace">
+    <title>Dashboard - Community Marketplace</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🏪</span>
+                <span class="logo-text">Community Marketplace</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="listings.html" class="nav-link">Browse</a>
+                </li>
+                <li class="nav-item">
+                    <a href="create-listing.html" class="nav-link">Sell Item</a>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="profile.html" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <button id="logoutBtn" class="nav-link btn-outline">Logout</button>
+                </li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <header class="dashboard-header">
+                <div class="welcome-section">
+                    <h1 class="dashboard-title">Welcome back, <span id="userName">User</span>!</h1>
+                    <p class="dashboard-subtitle">Here's what's happening with your listings</p>
+                </div>
+                <a href="create-listing.html" class="btn btn-primary">
+                    <span class="btn-icon">+</span>
+                    Create New Listing
+                </a>
+            </header>
+
+            <!-- Stats Overview -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="activeListings">0</span>
+                            <span class="stat-label">Active Listings</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👁️</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalViews">0</span>
+                            <span class="stat-label">Total Views</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalMessages">0</span>
+                            <span class="stat-label">Messages</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="soldItems">0</span>
+                            <span class="stat-label">Items Sold</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Content Grid -->
+            <div class="dashboard-grid">
+                <!-- My Listings Section -->
+                <section class="dashboard-section my-listings-section">
+                    <div class="section-header">
+                        <h2 class="section-title">My Listings</h2>
+                        <div class="section-actions">
+                            <select id="listingFilter" class="filter-select">
+                                <option value="all">All Listings</option>
+                                <option value="active">Active</option>
+                                <option value="sold">Sold</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="listings-list" id="myListings">
+                        <!-- Placeholder listing items -->
+                        <div class="listing-item placeholder">
+                            <div class="listing-item-image">
+                                <div class="image-placeholder"></div>
+                            </div>
+                            <div class="listing-item-info">
+                                <h3 class="listing-item-title">Loading...</h3>
+                                <p class="listing-item-price">$--</p>
+                                <p class="listing-item-meta">-- views • Posted --</p>
+                            </div>
+                            <div class="listing-item-actions">
+                                <span class="listing-status status-loading">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empty state -->
+                    <div class="empty-state hidden" id="emptyListings">
+                        <div class="empty-icon">📦</div>
+                        <h3 class="empty-title">No listings yet</h3>
+                        <p class="empty-description">Start selling by creating your first listing</p>
+                        <a href="create-listing.html" class="btn btn-primary">Create Listing</a>
+                    </div>
+                </section>
+
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar">
+                    <!-- Recent Messages -->
+                    <section class="sidebar-section messages-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Recent Messages</h2>
+                            <a href="#" class="view-all-link">View All</a>
+                        </div>
+                        <div class="messages-list" id="recentMessages">
+                            <!-- Placeholder messages -->
+                            <div class="message-item placeholder">
+                                <div class="message-avatar">
+                                    <div class="avatar-placeholder"></div>
+                                </div>
+                                <div class="message-content">
+                                    <p class="message-sender">Loading...</p>
+                                    <p class="message-preview">--</p>
+                                    <span class="message-time">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empty-state hidden" id="emptyMessages">
+                            <p class="empty-description">No messages yet</p>
+                        </div>
+                    </section>
+
+                    <!-- Saved Items -->
+                    <section class="sidebar-section saved-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Saved Items</h2>
+                            <a href="#" class="view-all-link">View All</a>
+                        </div>
+                        <div class="saved-list" id="savedItems">
+                            <!-- Placeholder saved items -->
+                            <div class="saved-item placeholder">
+                                <div class="saved-item-image">
+                                    <div class="image-placeholder"></div>
+                                </div>
+                                <div class="saved-item-info">
+                                    <p class="saved-item-title">Loading...</p>
+                                    <p class="saved-item-price">$--</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empty-state hidden" id="emptySaved">
+                            <p class="empty-description">No saved items</p>
+                        </div>
+                    </section>
+
+                    <!-- Quick Actions -->
+                    <section class="sidebar-section actions-section">
+                        <h2 class="section-title">Quick Actions</h2>
+                        <div class="quick-actions">
+                            <a href="create-listing.html" class="quick-action-btn">
+                                <span class="action-icon">➕</span>
+                                <span class="action-text">New Listing</span>
+                            </a>
+                            <a href="profile.html" class="quick-action-btn">
+                                <span class="action-icon">👤</span>
+                                <span class="action-text">Edit Profile</span>
+                            </a>
+                            <a href="listings.html" class="quick-action-btn">
+                                <span class="action-icon">🔍</span>
+                                <span class="action-text">Browse Items</span>
+                            </a>
+                            <a href="#" class="quick-action-btn">
+                                <span class="action-icon">⚙️</span>
+                                <span class="action-text">Settings</span>
+                            </a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Community Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

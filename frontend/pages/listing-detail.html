@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View listing details - Community Marketplace">
+    <title>Listing Details - Community Marketplace</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/listing-detail.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🏪</span>
+                <span class="logo-text">Community Marketplace</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="listings.html" class="nav-link">Browse</a>
+                </li>
+                <!-- Shown when logged out -->
+                <li class="nav-item auth-logged-out">
+                    <a href="login.html" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item auth-logged-out">
+                    <a href="register.html" class="nav-link btn-primary">Sign Up</a>
+                </li>
+                <!-- Shown when logged in -->
+                <li class="nav-item auth-logged-in hidden">
+                    <a href="create-listing.html" class="nav-link">Sell Item</a>
+                </li>
+                <li class="nav-item auth-logged-in hidden">
+                    <a href="dashboard.html" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item auth-logged-in hidden">
+                    <button id="logoutBtn" class="nav-link btn-outline">Logout</button>
+                </li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="listing-detail-main">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="listings.html">Listings</a></li>
+                    <li class="breadcrumb-item"><a href="listings.html?category=electronics" id="categoryBreadcrumb">Electronics</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" id="titleBreadcrumb">Loading...</li>
+                </ol>
+            </nav>
+
+            <div class="listing-detail-layout">
+                <!-- Image Gallery -->
+                <section class="listing-gallery">
+                    <div class="gallery-main">
+                        <div class="main-image-wrapper">
+                            <img src="" alt="Listing image" id="mainImage" class="main-image">
+                            <button type="button" class="gallery-nav gallery-prev" id="galleryPrev" aria-label="Previous image">❮</button>
+                            <button type="button" class="gallery-nav gallery-next" id="galleryNext" aria-label="Next image">❯</button>
+                            <span class="image-counter" id="imageCounter">1 / 4</span>
+                        </div>
+                    </div>
+                    <div class="gallery-thumbnails" id="galleryThumbnails">
+                        <!-- Thumbnails will be populated by JS -->
+                        <button type="button" class="thumbnail active">
+                            <div class="thumbnail-placeholder"></div>
+                        </button>
+                        <button type="button" class="thumbnail">
+                            <div class="thumbnail-placeholder"></div>
+                        </button>
+                        <button type="button" class="thumbnail">
+                            <div class="thumbnail-placeholder"></div>
+                        </button>
+                        <button type="button" class="thumbnail">
+                            <div class="thumbnail-placeholder"></div>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Listing Info -->
+                <section class="listing-info">
+                    <header class="listing-header">
+                        <div class="listing-category-badge" id="categoryBadge">Electronics</div>
+                        <h1 class="listing-title" id="listingTitle">Loading...</h1>
+                        <p class="listing-price" id="listingPrice">$--</p>
+                    </header>
+
+                    <div class="listing-meta">
+                        <span class="meta-item">
+                            <span class="meta-icon">📍</span>
+                            <span id="listingLocation">--</span>
+                        </span>
+                        <span class="meta-item">
+                            <span class="meta-icon">📅</span>
+                            <span id="listingDate">Posted --</span>
+                        </span>
+                        <span class="meta-item">
+                            <span class="meta-icon">👁️</span>
+                            <span id="listingViews">-- views</span>
+                        </span>
+                    </div>
+
+                    <div class="listing-condition">
+                        <span class="condition-label">Condition:</span>
+                        <span class="condition-value" id="listingCondition">--</span>
+                    </div>
+
+                    <div class="listing-actions">
+                        <button type="button" class="btn btn-primary btn-lg" id="contactSellerBtn">
+                            <span class="btn-icon">💬</span>
+                            Contact Seller
+                        </button>
+                        <button type="button" class="btn btn-outline" id="saveListingBtn">
+                            <span class="btn-icon" id="saveIcon">♡</span>
+                            <span id="saveText">Save</span>
+                        </button>
+                        <button type="button" class="btn btn-outline" id="shareBtn">
+                            <span class="btn-icon">↗️</span>
+                            Share
+                        </button>
+                    </div>
+
+                    <!-- Seller Info Card -->
+                    <div class="seller-card">
+                        <div class="seller-header">
+                            <div class="seller-avatar" id="sellerAvatar">
+                                <span class="avatar-placeholder">👤</span>
+                            </div>
+                            <div class="seller-info">
+                                <h3 class="seller-name" id="sellerName">Loading...</h3>
+                                <p class="seller-joined">Member since <span id="sellerJoined">--</span></p>
+                            </div>
+                        </div>
+                        <div class="seller-stats">
+                            <div class="stat">
+                                <span class="stat-value" id="sellerListings">--</span>
+                                <span class="stat-label">Listings</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="sellerRating">--</span>
+                                <span class="stat-label">Rating</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="sellerResponse">--</span>
+                                <span class="stat-label">Response</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-profile-link" id="viewProfileLink">View Full Profile →</a>
+                    </div>
+
+                    <!-- Safety Tips -->
+                    <div class="safety-tips">
+                        <h4 class="safety-title">🛡️ Safety Tips</h4>
+                        <ul class="safety-list">
+                            <li>Meet in a public place</li>
+                            <li>Never share personal financial information</li>
+                            <li>Inspect the item before payment</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Description Section -->
+            <section class="listing-description-section">
+                <h2 class="section-title">Description</h2>
+                <div class="description-content" id="listingDescription">
+                    <p>Loading description...</p>
+                </div>
+            </section>
+
+            <!-- Details Section -->
+            <section class="listing-details-section">
+                <h2 class="section-title">Details</h2>
+                <div class="details-grid" id="listingDetails">
+                    <div class="detail-item">
+                        <span class="detail-label">Category</span>
+                        <span class="detail-value" id="detailCategory">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Condition</span>
+                        <span class="detail-value" id="detailCondition">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Brand</span>
+                        <span class="detail-value" id="detailBrand">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Model</span>
+                        <span class="detail-value" id="detailModel">--</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Location Section -->
+            <section class="listing-location-section">
+                <h2 class="section-title">Location</h2>
+                <div class="location-content">
+                    <div class="location-map" id="locationMap">
+                        <div class="map-placeholder">
+                            <span class="map-icon">🗺️</span>
+                            <p>Map showing approximate location</p>
+                        </div>
+                    </div>
+                    <p class="location-text" id="locationText">Approximate location: --</p>
+                </div>
+            </section>
+
+            <!-- Similar Listings -->
+            <section class="similar-listings-section">
+                <div class="section-header">
+                    <h2 class="section-title">Similar Listings</h2>
+                    <a href="listings.html" class="view-all-link">View All →</a>
+                </div>
+                <div class="listings-grid" id="similarListings">
+                    <!-- Will be populated by JS -->
+                    <article class="listing-card placeholder">
+                        <div class="listing-image">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="listing-info">
+                            <h3 class="listing-title">Loading...</h3>
+                            <p class="listing-price">$--</p>
+                            <p class="listing-location">--</p>
+                        </div>
+                    </article>
+                    <article class="listing-card placeholder">
+                        <div class="listing-image">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="listing-info">
+                            <h3 class="listing-title">Loading...</h3>
+                            <p class="listing-price">$--</p>
+                            <p class="listing-location">--</p>
+                        </div>
+                    </article>
+                    <article class="listing-card placeholder">
+                        <div class="listing-image">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="listing-info">
+                            <h3 class="listing-title">Loading...</h3>
+                            <p class="listing-price">$--</p>
+                            <p class="listing-location">--</p>
+                        </div>
+                    </article>
+                    <article class="listing-card placeholder">
+                        <div class="listing-image">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="listing-info">
+                            <h3 class="listing-title">Loading...</h3>
+                            <p class="listing-price">$--</p>
+                            <p class="listing-location">--</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Contact Seller</h2>
+                <button type="button" class="modal-close" id="modalClose" aria-label="Close modal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="messageSubject" class="form-label">Subject</label>
+                        <input type="text" id="messageSubject" name="subject" class="form-input" 
+                               placeholder="Interested in your listing" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageContent" class="form-label">Message</label>
+                        <textarea id="messageContent" name="message" class="form-textarea" rows="5"
+                                  placeholder="Hi, I'm interested in this item. Is it still available?" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelContactBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+                <div class="auth-required hidden" id="authRequired">
+                    <p>Please log in to contact the seller</p>
+                    <a href="login.html" class="btn btn-primary">Login</a>
+                    <a href="register.html" class="btn btn-outline">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal" id="shareModal">
+        <div class="modal-backdrop" id="shareModalBackdrop"></div>
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2 class="modal-title">Share Listing</h2>
+                <button type="button" class="modal-close" id="shareModalClose" aria-label="Close modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <button type="button" class="share-option" id="copyLinkBtn">
+                        <span class="share-icon">🔗</span>
+                        <span>Copy Link</span>
+                    </button>
+                    <a href="#" class="share-option" id="shareTwitter" target="_blank" rel="noopener">
+                        <span class="share-icon">🐦</span>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="share-option" id="shareFacebook" target="_blank" rel="noopener">
+                        <span class="share-icon">📘</span>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" class="share-option" id="shareEmail">
+                        <span class="share-icon">✉️</span>
+                        <span>Email</span>
+                    </a>
+                </div>
+                <div class="share-url">
+                    <input type="text" id="shareUrl" class="form-input" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Community Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/listing-detail.js"></script>
+</body>
+</html>

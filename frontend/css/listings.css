@@ -1,0 +1,490 @@
+/* ===========================
+   Listings Page Styles
+   =========================== */
+
+/* Main Layout */
+.listings-main {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-gray-50);
+    min-height: calc(100vh - 140px);
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-title {
+    font-size: var(--font-size-3xl);
+    color: var(--color-gray-900);
+    margin-bottom: var(--spacing-xs);
+}
+
+.page-subtitle {
+    color: var(--color-gray-500);
+}
+
+/* Listings Layout */
+.listings-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--spacing-xl);
+}
+
+/* Filters Sidebar */
+.filters-sidebar {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    height: fit-content;
+    position: sticky;
+    top: calc(60px + var(--spacing-lg));
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.filters-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-gray-900);
+}
+
+.clear-filters-btn {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.clear-filters-btn:hover {
+    text-decoration: underline;
+}
+
+/* Filter Groups */
+.filter-group {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-gray-100);
+}
+
+.filter-group:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.filter-label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-gray-700);
+    margin-bottom: var(--spacing-sm);
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+}
+
+.filter-option input {
+    margin: 0;
+}
+
+.filter-option:hover {
+    color: var(--color-gray-900);
+}
+
+/* Price Filter */
+.price-inputs {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.price-input-wrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.price-symbol {
+    padding: var(--spacing-sm);
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-500);
+    font-size: var(--font-size-sm);
+}
+
+.price-input {
+    border: none;
+    padding: var(--spacing-sm);
+    width: 100%;
+    font-size: var(--font-size-sm);
+}
+
+.price-input:focus {
+    outline: none;
+}
+
+.price-separator {
+    color: var(--color-gray-400);
+    font-size: var(--font-size-sm);
+}
+
+/* Location Filter */
+.filter-text-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.filter-text-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.distance-slider {
+    margin-top: var(--spacing-sm);
+}
+
+.distance-slider label {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+.range-slider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--color-gray-200);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.apply-filters-btn {
+    margin-top: var(--spacing-md);
+}
+
+/* Mobile Filter Toggle */
+.mobile-filter-btn {
+    display: none;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-700);
+    cursor: pointer;
+}
+
+.mobile-filter-close {
+    display: none;
+    width: 100%;
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: var(--color-gray-100);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+}
+
+/* Listings Content */
+.listings-content {
+    flex: 1;
+}
+
+/* Toolbar */
+.listings-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.results-count {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+}
+
+.toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.sort-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.sort-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+}
+
+.sort-select {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    background-color: var(--color-white);
+    cursor: pointer;
+}
+
+.view-toggle {
+    display: flex;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.view-btn {
+    padding: var(--spacing-sm);
+    background-color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    color: var(--color-gray-500);
+    transition: all var(--transition-fast);
+}
+
+.view-btn:hover {
+    background-color: var(--color-gray-50);
+}
+
+.view-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.view-icon {
+    font-size: var(--font-size-lg);
+}
+
+/* Active Filters */
+.active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.filter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--color-primary-light);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+}
+
+.filter-tag-remove {
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+}
+
+/* Listings Grid - Override common for this page */
+.listings-content .listings-grid {
+    margin-bottom: var(--spacing-xl);
+}
+
+/* List View */
+.listings-grid.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.listings-grid.list-view .listing-card {
+    display: flex;
+    flex-direction: row;
+}
+
+.listings-grid.list-view .listing-card .listing-image {
+    width: 200px;
+    min-width: 200px;
+    aspect-ratio: auto;
+    height: 150px;
+}
+
+.listings-grid.list-view .listing-card .listing-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg) 0;
+}
+
+.pagination-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-700);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-pages {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.pagination-page {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-700);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.pagination-page:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.pagination-page.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.pagination-ellipsis {
+    padding: 0 var(--spacing-xs);
+    color: var(--color-gray-400);
+}
+
+/* Empty State */
+.listings-content .empty-state {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .listings-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: var(--z-modal);
+        border-radius: 0;
+        transform: translateX(-100%);
+        transition: transform var(--transition-normal);
+        overflow-y: auto;
+    }
+    
+    .filters-sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .mobile-filter-btn,
+    .mobile-filter-close {
+        display: flex;
+    }
+}
+
+@media (max-width: 640px) {
+    .listings-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .toolbar-actions {
+        justify-content: space-between;
+    }
+    
+    .sort-wrapper {
+        flex: 1;
+    }
+    
+    .sort-select {
+        flex: 1;
+    }
+    
+    .pagination-pages {
+        display: none;
+    }
+    
+    .listings-grid.list-view .listing-card {
+        flex-direction: column;
+    }
+    
+    .listings-grid.list-view .listing-card .listing-image {
+        width: 100%;
+        height: 200px;
+    }
+}

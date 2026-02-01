@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse all listings - Community Marketplace">
+    <title>Browse Listings - Community Marketplace</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/listings.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🏪</span>
+                <span class="logo-text">Community Marketplace</span>
+            </a>
+            
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="Search listings..." class="search-input">
+                <button type="button" id="searchBtn" class="search-btn">Search</button>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="listings.html" class="nav-link active">Browse</a>
+                </li>
+                <!-- Shown when logged out -->
+                <li class="nav-item auth-logged-out">
+                    <a href="login.html" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item auth-logged-out">
+                    <a href="register.html" class="nav-link btn-primary">Sign Up</a>
+                </li>
+                <!-- Shown when logged in -->
+                <li class="nav-item auth-logged-in hidden">
+                    <a href="create-listing.html" class="nav-link">Sell Item</a>
+                </li>
+                <li class="nav-item auth-logged-in hidden">
+                    <a href="dashboard.html" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item auth-logged-in hidden">
+                    <button id="logoutBtn" class="nav-link btn-outline">Logout</button>
+                </li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="listings-main">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1 class="page-title">Browse Listings</h1>
+                <p class="page-subtitle">Find great items from your community</p>
+            </header>
+
+            <div class="listings-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar" id="filtersSidebar">
+                    <div class="filters-header">
+                        <h2 class="filters-title">Filters</h2>
+                        <button type="button" class="clear-filters-btn" id="clearFiltersBtn">Clear All</button>
+                    </div>
+
+                    <form id="filtersForm" class="filters-form">
+                        <!-- Category Filter -->
+                        <div class="filter-group">
+                            <h3 class="filter-label">Category</h3>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="radio" name="category" value="all" checked>
+                                    <span>All Categories</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="category" value="electronics">
+                                    <span>Electronics</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="category" value="furniture">
+                                    <span>Furniture</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="category" value="clothing">
+                                    <span>Clothing</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="category" value="books">
+                                    <span>Books</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="category" value="sports">
+                                    <span>Sports</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="category" value="home">
+                                    <span>Home & Garden</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="category" value="vehicles">
+                                    <span>Vehicles</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="category" value="other">
+                                    <span>Other</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Range Filter -->
+                        <div class="filter-group">
+                            <h3 class="filter-label">Price Range</h3>
+                            <div class="price-inputs">
+                                <div class="price-input-wrapper">
+                                    <span class="price-symbol">$</span>
+                                    <input type="number" id="priceMin" name="priceMin" placeholder="Min" min="0" class="price-input">
+                                </div>
+                                <span class="price-separator">to</span>
+                                <div class="price-input-wrapper">
+                                    <span class="price-symbol">$</span>
+                                    <input type="number" id="priceMax" name="priceMax" placeholder="Max" min="0" class="price-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Condition Filter -->
+                        <div class="filter-group">
+                            <h3 class="filter-label">Condition</h3>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="condition" value="new">
+                                    <span>New</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="condition" value="like-new">
+                                    <span>Like New</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="condition" value="good">
+                                    <span>Good</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="condition" value="fair">
+                                    <span>Fair</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Location Filter -->
+                        <div class="filter-group">
+                            <h3 class="filter-label">Location</h3>
+                            <input type="text" id="locationFilter" name="location" placeholder="Enter city or zip" class="filter-text-input">
+                            <div class="distance-slider">
+                                <label for="distance">Within: <span id="distanceValue">25</span> miles</label>
+                                <input type="range" id="distance" name="distance" min="5" max="100" value="25" step="5" class="range-slider">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block apply-filters-btn">Apply Filters</button>
+                    </form>
+
+                    <!-- Mobile filter toggle -->
+                    <button type="button" class="mobile-filter-close" id="closeFiltersBtn">
+                        Close Filters
+                    </button>
+                </aside>
+
+                <!-- Listings Content -->
+                <div class="listings-content">
+                    <!-- Sort and View Options -->
+                    <div class="listings-toolbar">
+                        <div class="results-count">
+                            <span id="resultsCount">0</span> results
+                        </div>
+                        
+                        <div class="toolbar-actions">
+                            <button type="button" class="mobile-filter-btn" id="openFiltersBtn">
+                                <span class="filter-icon">⚙️</span>
+                                Filters
+                            </button>
+                            
+                            <div class="sort-wrapper">
+                                <label for="sortSelect" class="sort-label">Sort by:</label>
+                                <select id="sortSelect" class="sort-select">
+                                    <option value="newest">Newest First</option>
+                                    <option value="oldest">Oldest First</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="distance">Distance</option>
+                                </select>
+                            </div>
+
+                            <div class="view-toggle">
+                                <button type="button" class="view-btn active" id="gridViewBtn" aria-label="Grid view">
+                                    <span class="view-icon">⊞</span>
+                                </button>
+                                <button type="button" class="view-btn" id="listViewBtn" aria-label="List view">
+                                    <span class="view-icon">☰</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Filters Tags -->
+                    <div class="active-filters" id="activeFilters">
+                        <!-- Will be populated by JS -->
+                    </div>
+
+                    <!-- Listings Grid -->
+                    <div class="listings-grid" id="listingsGrid">
+                        <!-- Placeholder cards - will be populated by JS -->
+                        <article class="listing-card placeholder">
+                            <div class="listing-image">
+                                <div class="image-placeholder"></div>
+                            </div>
+                            <div class="listing-info">
+                                <h3 class="listing-title">Loading...</h3>
+                                <p class="listing-price">$--</p>
+                                <p class="listing-location">--</p>
+                                <p class="listing-date">--</p>
+                            </div>
+                        </article>
+                        <article class="listing-card placeholder">
+                            <div class="listing-image">
+                                <div class="image-placeholder"></div>
+                            </div>
+                            <div class="listing-info">
+                                <h3 class="listing-title">Loading...</h3>
+                                <p class="listing-price">$--</p>
+                                <p class="listing-location">--</p>
+                                <p class="listing-date">--</p>
+                            </div>
+                        </article>
+                        <article class="listing-card placeholder">
+                            <div class="listing-image">
+                                <div class="image-placeholder"></div>
+                            </div>
+                            <div class="listing-info">
+                                <h3 class="listing-title">Loading...</h3>
+                                <p class="listing-price">$--</p>
+                                <p class="listing-location">--</p>
+                                <p class="listing-date">--</p>
+                            </div>
+                        </article>
+                        <article class="listing-card placeholder">
+                            <div class="listing-image">
+                                <div class="image-placeholder"></div>
+                            </div>
+                            <div class="listing-info">
+                                <h3 class="listing-title">Loading...</h3>
+                                <p class="listing-price">$--</p>
+                                <p class="listing-location">--</p>
+                                <p class="listing-date">--</p>
+                            </div>
+                        </article>
+                        <article class="listing-card placeholder">
+                            <div class="listing-image">
+                                <div class="image-placeholder"></div>
+                            </div>
+                            <div class="listing-info">
+                                <h3 class="listing-title">Loading...</h3>
+                                <p class="listing-price">$--</p>
+                                <p class="listing-location">--</p>
+                                <p class="listing-date">--</p>
+                            </div>
+                        </article>
+                        <article class="listing-card placeholder">
+                            <div class="listing-image">
+                                <div class="image-placeholder"></div>
+                            </div>
+                            <div class="listing-info">
+                                <h3 class="listing-title">Loading...</h3>
+                                <p class="listing-price">$--</p>
+                                <p class="listing-location">--</p>
+                                <p class="listing-date">--</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="empty-state hidden" id="emptyState">
+                        <div class="empty-icon">🔍</div>
+                        <h3 class="empty-title">No listings found</h3>
+                        <p class="empty-description">Try adjusting your filters or search terms</p>
+                        <button type="button" class="btn btn-outline" id="resetFiltersBtn">Reset Filters</button>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav class="pagination" id="pagination">
+                        <button type="button" class="pagination-btn" id="prevPageBtn" disabled>
+                            ← Previous
+                        </button>
+                        <div class="pagination-pages" id="paginationPages">
+                            <button type="button" class="pagination-page active">1</button>
+                            <button type="button" class="pagination-page">2</button>
+                            <button type="button" class="pagination-page">3</button>
+                            <span class="pagination-ellipsis">...</span>
+                            <button type="button" class="pagination-page">10</button>
+                        </div>
+                        <button type="button" class="pagination-btn" id="nextPageBtn">
+                            Next →
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Community Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/listings.js"></script>
+</body>
+</html>

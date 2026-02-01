@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a new listing - Community Marketplace">
+    <title>Create Listing - Community Marketplace</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/create-listing.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🏪</span>
+                <span class="logo-text">Community Marketplace</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="listings.html" class="nav-link">Browse</a>
+                </li>
+                <li class="nav-item">
+                    <a href="create-listing.html" class="nav-link active">Sell Item</a>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="profile.html" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <button id="logoutBtn" class="nav-link btn-outline">Logout</button>
+                </li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="create-listing-main">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1 class="page-title">Create a Listing</h1>
+                <p class="page-subtitle">Fill in the details to list your item for sale</p>
+            </header>
+
+            <!-- Progress Indicator -->
+            <div class="progress-indicator">
+                <div class="progress-step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Photos</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Details</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Price & Location</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-label">Review</span>
+                </div>
+            </div>
+
+            <!-- Alert Container -->
+            <div id="alertContainer" class="alert-container"></div>
+
+            <form id="createListingForm" class="listing-form" novalidate>
+                <!-- Step 1: Photos -->
+                <section class="form-section" id="step1" data-step="1">
+                    <h2 class="section-title">Add Photos</h2>
+                    <p class="section-description">Add up to 8 photos. The first photo will be the cover image.</p>
+                    
+                    <div class="photo-upload-area">
+                        <div class="photo-grid" id="photoGrid">
+                            <!-- Primary Photo Upload -->
+                            <div class="photo-slot primary" id="photoSlot0">
+                                <input type="file" id="photo0" name="photos" accept="image/*" class="photo-input">
+                                <label for="photo0" class="photo-label">
+                                    <span class="upload-icon">📷</span>
+                                    <span class="upload-text">Add Cover Photo</span>
+                                    <span class="upload-hint">Required</span>
+                                </label>
+                                <div class="photo-preview hidden">
+                                    <img src="" alt="Preview" class="preview-image">
+                                    <button type="button" class="remove-photo-btn" aria-label="Remove photo">×</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Additional Photo Slots -->
+                            <div class="photo-slot" id="photoSlot1">
+                                <input type="file" id="photo1" name="photos" accept="image/*" class="photo-input">
+                                <label for="photo1" class="photo-label">
+                                    <span class="upload-icon">+</span>
+                                </label>
+                                <div class="photo-preview hidden">
+                                    <img src="" alt="Preview" class="preview-image">
+                                    <button type="button" class="remove-photo-btn" aria-label="Remove photo">×</button>
+                                </div>
+                            </div>
+                            <div class="photo-slot" id="photoSlot2">
+                                <input type="file" id="photo2" name="photos" accept="image/*" class="photo-input">
+                                <label for="photo2" class="photo-label">
+                                    <span class="upload-icon">+</span>
+                                </label>
+                                <div class="photo-preview hidden">
+                                    <img src="" alt="Preview" class="preview-image">
+                                    <button type="button" class="remove-photo-btn" aria-label="Remove photo">×</button>
+                                </div>
+                            </div>
+                            <div class="photo-slot" id="photoSlot3">
+                                <input type="file" id="photo3" name="photos" accept="image/*" class="photo-input">
+                                <label for="photo3" class="photo-label">
+                                    <span class="upload-icon">+</span>
+                                </label>
+                                <div class="photo-preview hidden">
+                                    <img src="" alt="Preview" class="preview-image">
+                                    <button type="button" class="remove-photo-btn" aria-label="Remove photo">×</button>
+                                </div>
+                            </div>
+                            <div class="photo-slot" id="photoSlot4">
+                                <input type="file" id="photo4" name="photos" accept="image/*" class="photo-input">
+                                <label for="photo4" class="photo-label">
+                                    <span class="upload-icon">+</span>
+                                </label>
+                                <div class="photo-preview hidden">
+                                    <img src="" alt="Preview" class="preview-image">
+                                    <button type="button" class="remove-photo-btn" aria-label="Remove photo">×</button>
+                                </div>
+                            </div>
+                            <div class="photo-slot" id="photoSlot5">
+                                <input type="file" id="photo5" name="photos" accept="image/*" class="photo-input">
+                                <label for="photo5" class="photo-label">
+                                    <span class="upload-icon">+</span>
+                                </label>
+                                <div class="photo-preview hidden">
+                                    <img src="" alt="Preview" class="preview-image">
+                                    <button type="button" class="remove-photo-btn" aria-label="Remove photo">×</button>
+                                </div>
+                            </div>
+                            <div class="photo-slot" id="photoSlot6">
+                                <input type="file" id="photo6" name="photos" accept="image/*" class="photo-input">
+                                <label for="photo6" class="photo-label">
+                                    <span class="upload-icon">+</span>
+                                </label>
+                                <div class="photo-preview hidden">
+                                    <img src="" alt="Preview" class="preview-image">
+                                    <button type="button" class="remove-photo-btn" aria-label="Remove photo">×</button>
+                                </div>
+                            </div>
+                            <div class="photo-slot" id="photoSlot7">
+                                <input type="file" id="photo7" name="photos" accept="image/*" class="photo-input">
+                                <label for="photo7" class="photo-label">
+                                    <span class="upload-icon">+</span>
+                                </label>
+                                <div class="photo-preview hidden">
+                                    <img src="" alt="Preview" class="preview-image">
+                                    <button type="button" class="remove-photo-btn" aria-label="Remove photo">×</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="photo-hint">Tip: Good photos increase your chances of selling</p>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-primary btn-next" data-next="2">
+                            Continue to Details →
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Step 2: Details -->
+                <section class="form-section hidden" id="step2" data-step="2">
+                    <h2 class="section-title">Item Details</h2>
+                    <p class="section-description">Provide detailed information about your item</p>
+
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="title" class="form-label">Title *</label>
+                            <input type="text" id="title" name="title" class="form-input" 
+                                   placeholder="e.g., iPhone 13 Pro - Excellent Condition"
+                                   required maxlength="100">
+                            <span class="char-count"><span id="titleCount">0</span>/100</span>
+                            <span class="form-error" id="titleError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category" class="form-label">Category *</label>
+                            <select id="category" name="category" class="form-select" required>
+                                <option value="">Select a category</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="books">Books</option>
+                                <option value="sports">Sports</option>
+                                <option value="home">Home & Garden</option>
+                                <option value="vehicles">Vehicles</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="form-error" id="categoryError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="condition" class="form-label">Condition *</label>
+                            <select id="condition" name="condition" class="form-select" required>
+                                <option value="">Select condition</option>
+                                <option value="new">New</option>
+                                <option value="like-new">Like New</option>
+                                <option value="good">Good</option>
+                                <option value="fair">Fair</option>
+                            </select>
+                            <span class="form-error" id="conditionError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="brand" class="form-label">Brand</label>
+                            <input type="text" id="brand" name="brand" class="form-input" 
+                                   placeholder="e.g., Apple, IKEA, Nike" maxlength="50">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="model" class="form-label">Model</label>
+                            <input type="text" id="model" name="model" class="form-input" 
+                                   placeholder="e.g., iPhone 13 Pro" maxlength="50">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="description" class="form-label">Description *</label>
+                            <textarea id="description" name="description" class="form-textarea" rows="6"
+                                      placeholder="Describe your item in detail. Include any relevant information like size, color, age, reason for selling, etc."
+                                      required maxlength="2000"></textarea>
+                            <span class="char-count"><span id="descriptionCount">0</span>/2000</span>
+                            <span class="form-error" id="descriptionError"></span>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="form-label">Tags</label>
+                            <div class="tags-input-wrapper">
+                                <div class="tags-container" id="tagsContainer"></div>
+                                <input type="text" id="tagsInput" class="tags-input" 
+                                       placeholder="Add tags (press Enter)">
+                            </div>
+                            <span class="form-hint">Add relevant tags to help buyers find your item</span>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-outline btn-prev" data-prev="1">
+                            ← Back to Photos
+                        </button>
+                        <button type="button" class="btn btn-primary btn-next" data-next="3">
+                            Continue to Price →
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Step 3: Price & Location -->
+                <section class="form-section hidden" id="step3" data-step="3">
+                    <h2 class="section-title">Price & Location</h2>
+                    <p class="section-description">Set your price and meetup location</p>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="price" class="form-label">Price *</label>
+                            <div class="price-input-wrapper">
+                                <span class="currency-symbol">$</span>
+                                <input type="number" id="price" name="price" class="form-input price-input"
+                                       placeholder="0.00" required min="0" step="0.01">
+                            </div>
+                            <span class="form-error" id="priceError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Price Type</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="priceType" value="fixed" checked>
+                                    <span class="radio-custom"></span>
+                                    <span>Fixed Price</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="priceType" value="negotiable">
+                                    <span class="radio-custom"></span>
+                                    <span>Negotiable</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="priceType" value="free">
+                                    <span class="radio-custom"></span>
+                                    <span>Free</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="location" class="form-label">Meetup Location *</label>
+                            <input type="text" id="location" name="location" class="form-input"
+                                   placeholder="e.g., Downtown Seattle, WA" required maxlength="100">
+                            <span class="form-hint">Enter a general area - don't include your exact address</span>
+                            <span class="form-error" id="locationError"></span>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="form-label">Delivery Options</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="delivery" value="pickup" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span>Local Pickup</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="delivery" value="delivery">
+                                    <span class="checkbox-custom"></span>
+                                    <span>Willing to Deliver (within area)</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="delivery" value="shipping">
+                                    <span class="checkbox-custom"></span>
+                                    <span>Shipping Available</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-outline btn-prev" data-prev="2">
+                            ← Back to Details
+                        </button>
+                        <button type="button" class="btn btn-primary btn-next" data-next="4">
+                            Review Listing →
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Step 4: Review -->
+                <section class="form-section hidden" id="step4" data-step="4">
+                    <h2 class="section-title">Review Your Listing</h2>
+                    <p class="section-description">Make sure everything looks good before publishing</p>
+
+                    <div class="review-preview">
+                        <div class="preview-card">
+                            <div class="preview-images" id="previewImages">
+                                <div class="preview-main-image">
+                                    <img src="" alt="Preview" id="previewMainImage">
+                                </div>
+                            </div>
+                            <div class="preview-info">
+                                <h3 class="preview-title" id="previewTitle">--</h3>
+                                <p class="preview-price" id="previewPrice">$--</p>
+                                <p class="preview-meta">
+                                    <span id="previewCategory">--</span> • 
+                                    <span id="previewCondition">--</span>
+                                </p>
+                                <p class="preview-location">
+                                    <span class="location-icon">📍</span>
+                                    <span id="previewLocation">--</span>
+                                </p>
+                                <div class="preview-description" id="previewDescription">--</div>
+                            </div>
+                        </div>
+
+                        <div class="review-checklist">
+                            <h4 class="checklist-title">Before you publish:</h4>
+                            <ul class="checklist">
+                                <li class="checklist-item">
+                                    <span class="check-icon" id="checkPhotos">⬜</span>
+                                    <span>At least one photo added</span>
+                                </li>
+                                <li class="checklist-item">
+                                    <span class="check-icon" id="checkTitle">⬜</span>
+                                    <span>Clear, descriptive title</span>
+                                </li>
+                                <li class="checklist-item">
+                                    <span class="check-icon" id="checkDescription">⬜</span>
+                                    <span>Detailed description</span>
+                                </li>
+                                <li class="checklist-item">
+                                    <span class="check-icon" id="checkPrice">⬜</span>
+                                    <span>Price set</span>
+                                </li>
+                                <li class="checklist-item">
+                                    <span class="check-icon" id="checkLocation">⬜</span>
+                                    <span>Location specified</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-outline btn-prev" data-prev="3">
+                            ← Edit Listing
+                        </button>
+                        <div class="submit-actions">
+                            <button type="button" class="btn btn-outline" id="saveDraftBtn">
+                                Save as Draft
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-lg" id="publishBtn">
+                                <span class="btn-text">Publish Listing</span>
+                                <span class="btn-loader hidden"></span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer-minimal">
+        <div class="container">
+            <p>&copy; 2026 Community Marketplace. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/create-listing.js"></script>
+</body>
+</html>

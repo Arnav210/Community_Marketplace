@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create an account on Community Marketplace">
+    <title>Sign Up - Community Marketplace</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🏪</span>
+                <span class="logo-text">Community Marketplace</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="listings.html" class="nav-link">Browse</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link btn-primary">Login</a>
+                </li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="auth-main">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1 class="auth-title">Create Account</h1>
+                    <p class="auth-subtitle">Join your local community marketplace</p>
+                </div>
+
+                <!-- Alert container for messages -->
+                <div id="alertContainer" class="alert-container"></div>
+
+                <form id="registerForm" class="auth-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input 
+                                type="text" 
+                                id="firstName" 
+                                name="firstName" 
+                                class="form-input" 
+                                placeholder="John"
+                                required
+                                autocomplete="given-name"
+                                minlength="2"
+                                maxlength="50"
+                            >
+                            <span class="form-error" id="firstNameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input 
+                                type="text" 
+                                id="lastName" 
+                                name="lastName" 
+                                class="form-input" 
+                                placeholder="Doe"
+                                required
+                                autocomplete="family-name"
+                                minlength="2"
+                                maxlength="50"
+                            >
+                            <span class="form-error" id="lastNameError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="you@example.com"
+                            required
+                            autocomplete="email"
+                        >
+                        <span class="form-error" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="form-input" 
+                                placeholder="Create a strong password"
+                                required
+                                autocomplete="new-password"
+                                minlength="8"
+                            >
+                            <button 
+                                type="button" 
+                                class="password-toggle" 
+                                id="passwordToggle"
+                                aria-label="Toggle password visibility"
+                            >
+                                <span class="eye-icon">👁️</span>
+                            </button>
+                        </div>
+                        <span class="form-error" id="passwordError"></span>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <span class="strength-text" id="strengthText">Password strength</span>
+                        </div>
+                        <ul class="password-requirements" id="passwordRequirements">
+                            <li id="reqLength" class="requirement">At least 8 characters</li>
+                            <li id="reqUpper" class="requirement">One uppercase letter</li>
+                            <li id="reqLower" class="requirement">One lowercase letter</li>
+                            <li id="reqNumber" class="requirement">One number</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                name="confirmPassword" 
+                                class="form-input" 
+                                placeholder="Confirm your password"
+                                required
+                                autocomplete="new-password"
+                            >
+                            <button 
+                                type="button" 
+                                class="password-toggle" 
+                                id="confirmPasswordToggle"
+                                aria-label="Toggle password visibility"
+                            >
+                                <span class="eye-icon">👁️</span>
+                            </button>
+                        </div>
+                        <span class="form-error" id="confirmPasswordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location" class="form-label">Location (City/Neighborhood)</label>
+                        <input 
+                            type="text" 
+                            id="location" 
+                            name="location" 
+                            class="form-input" 
+                            placeholder="e.g., Downtown Seattle"
+                            autocomplete="address-level2"
+                            maxlength="100"
+                        >
+                        <span class="form-hint">This helps connect you with nearby buyers and sellers</span>
+                        <span class="form-error" id="locationError"></span>
+                    </div>
+
+                    <div class="form-group form-group-checkbox">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">
+                                I agree to the <a href="#" class="auth-link">Terms of Service</a> 
+                                and <a href="#" class="auth-link">Privacy Policy</a>
+                            </span>
+                        </label>
+                        <span class="form-error" id="agreeTermsError"></span>
+                    </div>
+
+                    <div class="form-group form-group-checkbox">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">Send me updates about new features and listings</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                        <span class="btn-text">Create Account</span>
+                        <span class="btn-loader hidden"></span>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html" class="auth-link">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer-minimal">
+        <div class="container">
+            <p>&copy; 2026 Community Marketplace. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+</html>
